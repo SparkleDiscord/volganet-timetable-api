@@ -47,12 +47,13 @@ class VolganetTimetable:
         return self.__clear_keys(self.__create_post("getTransTypeTree", params))
 
     """
-        r_type values:
-        tt_id = 1 -> Автобус    - Bus
-        tt_id = 2 -> Троллейбус - Trolleybus
-        tt_id = 3 -> Трамвай    - Tram
+        route_type values:
+        1 -> Автобус    - Bus
+        2 -> Троллейбус - Trolleybus
+        3 -> Трамвай    - Tram
     """
-    def get_routes_by_transport_num(self, route_type, routes_numbers = []):
+    def get_routes_by_local_num(self, route_type, routes_numbers = []):
+        routes_numbers = [str(x) for x in routes_numbers]
         timetable = self.get_all_routes()
         return [
             route 
@@ -81,7 +82,7 @@ class VolganetTimetable:
         A -> B
         B <- A
     """
-    def get_route_timetable(self, route_id, transport_number, direction, date = "", station_id = 0):
+    def get_route_timetable(self, route_id, route_number, direction, date = "", station_id = 0):
         if date == "":
             date = d.today().strftime("%Y-%m-%d")
         params = {
