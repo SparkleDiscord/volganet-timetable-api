@@ -12,7 +12,7 @@ Get all routes, which include all types of transport.
 vt = VolganetTimetable()
 routes = vt.get_all_routes()
 ```
-Return array of transport objects. Every object contains fields:
+Return array of transport objects. Each **transport** contains fields:
 
 Field | Description |
 ----- | ----------- |
